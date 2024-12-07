@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/exception73/studnets-api/internal/config"
+	"github.com/exception73/studnets-api/internal/http/handlers/student"
 )
 
 func main() {
@@ -21,9 +22,7 @@ func main() {
 	//setup router
 	router := http.NewServeMux()
 
-	router.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("weclome to go project"))
-	})
+	router.HandleFunc("POST /api/students", student.New())
 	//setup server
 	server := http.Server{
 		Addr:    cfg.Addr,
